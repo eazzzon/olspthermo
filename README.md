@@ -29,7 +29,7 @@ or run through the jupiter file.
 
 **DON'T** change the header/column name of the example excel template files. 
 
-## Monte Carlo simulation to progagation errors
+## Monte Carlo simulation for error progagation
 
 We also provide a MC approach to progagate the analytical errors to the temperature estimation. an example is given by calling 
 
