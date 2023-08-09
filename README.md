@@ -45,4 +45,4 @@ We also provide an excel spreadsheet (`OSAT.xlsx`) to calculate temperature with
 
 ## How to cite
 
-Zhang Y, Namur O, Li W, Shorttle O, Gazel E, Jennings ES, Thy P, Grove TL, Charlier B (under review). An extended calibration of the olivine-spinel aluminum exchange thermometer: Application to the melting conditions and mantle lithology of large igneous provinces. 
+Zhang Y, Namur O, Li W, Shorttle O, Gazel E, Jennings ES, Thy P, Grove TL, Charlier B (under review). An extended calibration of the olivine-spinel aluminum exchange thermometer: Application to the melting conditions and mantle lithologies of large igneous provinces. 
