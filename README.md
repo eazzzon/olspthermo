@@ -55,6 +55,8 @@ We also provide an excel spreadsheet (`OSAT.xlsx` ) and example notebook files t
 | err_zThermoAlCr | Temperature uncertainty chose from comparison of Eqs. 5, 7 & 8 |
 | t_zThermoAl     | Temperature chose from comparison of Eqs. 5 & 7              |
 | err_zThermoAl   | Temperature uncertainty chose from comparison of Eqs. 5 & 7  |
+| t_zThermoCr     | Temperature chose from comparison of Eqs. 5 & 8              |
+| err_zThermoCr   | Temperature uncertainty chose from comparison of Eqs. 5 & 8  |
 | z_thermo_cr     | Z-score between Eq. 5 & 8                                    |
 | z_thermo_al     | Z-score between Eq. 5 & 7                                    |
 | p_thermo_cr     | p-value for z_thermo_cr                                      |

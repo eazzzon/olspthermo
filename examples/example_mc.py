@@ -26,12 +26,12 @@ mc = 1000
 sp_mc_collect = pd.DataFrame()
 for idx in range(len(df_sp)):
     df_iter = vec_mc(df_sp[mc_col_sp], df_sp_err[mc_col_sp], idx, mc)
-    sp_mc_collect = sp_mc_collect.append(df_iter)
+    sp_mc_collect = pd.concat((sp_mc_collect, df_iter))
 
 ol_mc_collect = pd.DataFrame()
 for idx in range(len(df_ol)):
     df_iter = vec_mc(df_ol[mc_col_ol], df_ol_err[mc_col_ol], idx, mc)
-    ol_mc_collect = ol_mc_collect.append(df_iter)
+    ol_mc_collect = pd.concat((ol_mc_collect, df_iter))
 
 sp_mc_collect.columns = mc_col_sp
 sp_mc_collect[sp_mc_collect < 0] = 0
@@ -52,5 +52,5 @@ sp_mc_collect['sample_no'] = sp_mc_collect.index
 reg = thermometers.models(ol_mc_collect, sp_mc_collect).compute()
 
 print(
-reg.groupby('sample_group')[['t_thermo', 't_kdcr', 't_kdal', 't_coogan','t_zThermoAlCr', 't_zThermoAl']].agg(['mean', 'std'])
+reg.groupby('sample_group')[['t_thermo', 't_kdcr', 't_kdal', 't_coogan','t_zThermoAlCr', 't_zThermoAl', 't_zThermoCr']].agg(['mean', 'std'])
 )

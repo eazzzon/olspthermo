@@ -206,6 +206,9 @@ def _ztest(df):
     t_chosen_2 = []
     err_chosen_2 = []
 
+    t_chosen_2_cr = []
+    err_chosen_2_cr = []
+
     for idx, row in dfmc[["t_thermo", "t_kdcr", "t_kdal"]].iterrows():
         if (row["t_thermo"] > row["t_kdcr"]) and (row["t_thermo"] > row["t_kdal"]):
             t = row["t_thermo"]
@@ -241,7 +244,20 @@ def _ztest(df):
         t_chosen_2.append(t)
         err_chosen_2.append(err)
 
-    return t_chosen_3, err_chosen_3,t_chosen_2, err_chosen_2, z_thermo_cr, z_thermo_al
+    for idx, row in dfmc[["t_thermo", "t_kdcr"]].iterrows():
+        if (row["t_thermo"] > row["t_kdcr"]):
+            t = row["t_thermo"]
+            err = 23.9
+        elif z_thermo_cr[idx] > 0.6744897 * 2:
+            t = row["t_kdcr"]
+            err = 34.2
+        else:
+            t = row["t_thermo"]
+            err = 23.9
+        t_chosen_2_cr.append(t)
+        err_chosen_2_cr.append(err)
+
+    return t_chosen_3, err_chosen_3, t_chosen_2, err_chosen_2, t_chosen_2_cr, err_chosen_2_cr, z_thermo_cr, z_thermo_al
 
 
 class models:
@@ -306,16 +322,18 @@ class models:
             - 273.15
         )
 
-        t_chosen_3, err_chosen_3,t_chosen_2, err_chosen_2, z_thermo_cr, z_thermo_al = _ztest(self.df_ol_sp)
+        t_chosen_3, err_chosen_3,t_chosen_2, err_chosen_2, t_chosen_2_cr, err_chosen_2_cr, z_thermo_cr, z_thermo_al = _ztest(self.df_ol_sp)
         # z_test results
         self.df_ol_sp[
-            ["t_zThermoAlCr", "err_zThermoAlCr","t_zThermoAl", "err_zThermoAl", "z_thermo_cr", "z_thermo_al"]
+            ["t_zThermoAlCr", "err_zThermoAlCr","t_zThermoAl", "err_zThermoAl",  "t_zThermoCr", "err_zThermoCr", "z_thermo_cr", "z_thermo_al"]
         ] = pd.DataFrame(
             {
                 "t_zThermoAlCr": t_chosen_3,
                 "err_zThermoAlCr": err_chosen_3,
                 "t_zThermoAl": t_chosen_2,
                 "err_zThermoAl": err_chosen_2,
+                "t_zThermoCr":t_chosen_2_cr,
+                "err_zThermoCr":err_chosen_2_cr,
                 "z_thermo_cr": z_thermo_cr,
                 "z_thermo_al": z_thermo_al,
             }
