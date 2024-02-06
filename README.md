@@ -3,7 +3,7 @@
 Python scripts for the new models of the olivine-spinel Al exchange thermometers (OSAT). 
 
 ## Installation
-```pip install https://github.com/eazzzon/olspthermo.git```
+```pip install "git+https://github.com/eazzzon/olspthermo.git"```
 
 ## Requirement
 `numpy`
