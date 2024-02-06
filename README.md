@@ -15,7 +15,7 @@ Python scripts for the new models of the olivine-spinel Al exchange thermometers
 `periodictable`
 
 ## Uninstallation
-```pip uninstall olspthermo```
+```pip uninstall OSAT```
 
 ## Example
 
